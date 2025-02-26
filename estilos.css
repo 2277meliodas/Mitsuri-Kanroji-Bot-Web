@@ -1,0 +1,66 @@
+/* Estilos Generales */
+body {
+    font-family: Arial, sans-serif;
+    background: url('assets/images/fondo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+/* Contenedor Central */
+.container {
+    width: 90%;
+    max-width: 400px;
+    margin: 50px auto;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Formularios */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+input {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+button {
+    background: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Diseño de Bots */
+.bot {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.bot img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.bot h2 {
+    margin: 10px 0;
+}
