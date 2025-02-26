@@ -49,21 +49,6 @@ Mitsuri-Karonji-Web es una plataforma que permite a los usuarios registrarse, se
 
 ---
 
-## 🚀 Cómo ejecutar el proyecto
-1. **Clonar el repositorio**  
-   ```bash
-   git clone https://github.com/TU-USUARIO/Mitsuri-Kanroji-web.git
-
-2. Abrir index.html en el navegador
-
-
-3. ¡Disfruta de la plataforma!
-
-
-
-
----
-
 📊 Estado del Servidor
 
 🔵 Estado actual: ✅ Online
