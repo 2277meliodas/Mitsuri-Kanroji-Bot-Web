@@ -1,102 +1,96 @@
-<!DOCTYPE html>  
-<html lang="es">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Kanroji-Bot-Web</title>  
-    <link rel="stylesheet" href="estilos.css">  
-    <meta property="og:title" content="Kanroji-Bot-Web">  
-    <meta property="og:description" content="Alquila o compra tu bot personalizado con Kanroji-Bot.">  
-    <meta property="og:image" content="https://qu.ax/ktODx.jpg">  
-    <meta property="og:url" content="https://2277meliodas.github.io/Mitsuri-Kanroji-Bot-Web/">  
-    <meta property="og:type" content="website">  
-    <meta name="twitter:card" content="summary_large_image">  
-    <meta name="twitter:title" content="Kanroji-Bot-Web">  
-    <meta name="twitter:description" content="Alquila o compra tu bot personalizado con Kanroji-Bot.">  
-    <meta name="twitter:image" content="https://qu.ax/ktODx.jpg">  
-</head>  
-<body>  
-<div id="registro" class="container" style="display: none;">  
-    <h1>Registro de Usuario</h1>  
-    <form id="form-registro">  
-        <label for="nombre">Nombre:</label>  
-        <input type="text" id="nombre" name="nombre" required>  
-        <label for="email">Correo Electrónico:</label>  
-        <input type="email" id="email" name="email" required>  
-        <label for="password">Contraseña:</label>  
-        <input type="password" id="password" name="password" required>  
-        <button type="submit">Registrarse</button>  
-    </form>  
-</div>  
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanroji-Bot-Web</title>
+    <link rel="stylesheet" href="estilos.css">
+    <meta property="og:title" content="Kanroji-Bot-Web">
+    <meta property="og:description" content="Alquila o compra tu bot personalizado con Kanroji-Bot.">
+    <meta property="og:image" content="https://qu.ax/ktODx.jpg">
+    <meta property="og:url" content="https://2277meliodas.github.io/Mitsuri-Kanroji-Bot-Web/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kanroji-Bot-Web">
+    <meta name="twitter:description" content="Alquila o compra tu bot personalizado con Kirito-Bot.">
+    <meta name="twitter:image" content="https://qu.ax/ktODx.jpg">
+</head>
+<body>
 
-<div id="perfil" class="container" style="display: none;">  
-    <h1>Bienvenido, <span id="user-name"></span>!</h1>  
-    <p>Correo: <span id="user-email"></span></p>  
-    <button onclick="cerrarSesion()">Cerrar sesión</button>  
-</div>  
+<div id="registro" class="container" style="display: none;">
+    <h1>Registro de Usuario</h1>
+    <form id="form-registro">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Registrarse</button>
+    </form>
+</div>
 
-<div id="seleccion-bots" class="container" style="display: none;">  
-    <h1>Elige tu Bot</h1>  
-    <div class="bot">  
-        <img src="assets/images/bot1.jpg" alt="Bot de Grupos">  
-        <h2>Bot de Grupos</h2>  
-        <button id="bot-grupos">𝗠𝗘𝗡𝗦: 10$</button>  
-    </div>  
-    <div class="bot">  
-        <img src="assets/images/bot2.jpg" alt="Bot Personal">  
-        <h2>Bot Personal</h2>  
-        <button id="bot-personal">𝗠𝗘𝗡𝗦: 77655$</button>  
-    </div>  
-</div>  
+<div id="perfil" class="container" style="display: none;">
+    <h1>Bienvenido, <span id="user-name"></span>!</h1>
+    <p>Correo: <span id="user-email"></span></p>
+    <button onclick="cerrarSesion()">Cerrar sesión</button>
+</div>
 
-<script>  
-    window.onload = function() {  
-        if(localStorage.getItem('user')) {  
-            mostrarPerfil();  
-        } else {  
-            document.getElementById('registro').style.display = 'block';  
-        }  
-    };  
+<div id="seleccion-bots" class="container" style="display: none;">
+    <h1>Elige tu Bot</h1>
+    <div class="bot">
+        <img src="assets/images/bot1.jpg" alt="Bot de Grupos">
+        <h2>Bot de Grupos</h2>
+        <button onclick="redireccionarPago('Bot de Grupos', 10)">𝗠𝗘𝗡𝗦: 10$</button>
+    </div>
+    <div class="bot">
+        <img src="assets/images/bot2.jpg" alt="Bot Personal">
+        <h2>Bot Personal</h2>
+        <button onclick="redireccionarPago('Bot Personal', 5)">𝗠𝗘𝗡𝗦: 10$</button>
+    </div>
+</div>
 
-    document.getElementById("form-registro").addEventListener("submit", function(event) {  
-        event.preventDefault();  
-        const nombre = document.getElementById('nombre').value;  
-        const email = document.getElementById('email').value;  
-        localStorage.setItem('user', JSON.stringify({ nombre, email }));  
-        mostrarPerfil();  
-    });  
+<script src="main.js"></script>
+<script>
+    window.onload = function() {
+        if(localStorage.getItem('user')) {
+            mostrarPerfil();
+        } else {
+            document.getElementById('registro').style.display = 'block';
+        }
+    };
 
-    function mostrarPerfil() {  
-        const usuario = JSON.parse(localStorage.getItem('user'));  
-        document.getElementById('user-name').innerText = usuario.nombre;  
-        document.getElementById('user-email').innerText = usuario.email;  
-        document.getElementById('registro').style.display = 'none';  
-        document.getElementById('perfil').style.display = 'block';  
-        document.getElementById('seleccion-bots').style.display = 'block';  
-    }  
+    document.getElementById("form-registro").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const nombre = document.getElementById('nombre').value;
+        const email = document.getElementById('email').value;
+        localStorage.setItem('user', JSON.stringify({ nombre, email }));
+        mostrarPerfil();
+    });
 
-    function cerrarSesion() {  
-        localStorage.removeItem('user');  
-        document.getElementById('perfil').style.display = 'none';  
-        document.getElementById('registro').style.display = 'block';  
-        document.getElementById('seleccion-bots').style.display = 'none';  
-    }  
+    function mostrarPerfil() {
+        const usuario = JSON.parse(localStorage.getItem('user'));
+        document.getElementById('user-name').innerText = usuario.nombre;
+        document.getElementById('user-email').innerText = usuario.email;
+        document.getElementById('registro').style.display = 'none';
+        document.getElementById('perfil').style.display = 'block';
+        document.getElementById('seleccion-bots').style.display = 'block';
+    }
 
-    function redireccionarPago(tipoBot, precio) {  
+    function cerrarSesion() {
+        localStorage.removeItem('user');
+        document.getElementById('perfil').style.display = 'none';
+        document.getElementById('registro').style.display = 'block';
+        document.getElementById('seleccion-bots').style.display = 'none';
+    }
+
+    function redireccionarPago(tipoBot, precio) {
         const numero = "50488198573";  
         const mensaje = `Hola, quiero comprar el ${tipoBot} por ${precio}$.`;  
         const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;  
         window.location.href = url;  
-    }  
+    }
+</script>
 
-    document.getElementById("bot-grupos").addEventListener("click", function() {  
-        redireccionarPago("Bot de Grupos", 10);  
-    });  
-
-    document.getElementById("bot-personal").addEventListener("click", function() {  
-        redireccionarPago("Bot Personal", 5);  
-    });  
-</script>  
-
-</body>  
+</body>
 </html>
