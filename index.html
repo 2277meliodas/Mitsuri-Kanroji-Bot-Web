@@ -12,7 +12,7 @@
     <meta property="og:type" content="website">  
     <meta name="twitter:card" content="summary_large_image">  
     <meta name="twitter:title" content="Kanroji-Bot-Web">  
-    <meta name="twitter:description" content="Alquila o compra tu bot personalizado con Kirito-Bot.">  
+    <meta name="twitter:description" content="Alquila o compra tu bot personalizado con Kanroji-Bot.">  
     <meta name="twitter:image" content="https://qu.ax/ktODx.jpg">  
 </head>  
 <body>  
@@ -40,27 +40,15 @@
     <div class="bot">  
         <img src="assets/images/bot1.jpg" alt="Bot de Grupos">  
         <h2>Bot de Grupos</h2>  
-        <button onclick="mostrarPago()">𝗠𝗘𝗡𝗦: 10$</button>  
+        <button onclick="redireccionarPago('Bot de Grupos', 10)">𝗠𝗘𝗡𝗦: 10$</button>  
     </div>  
     <div class="bot">  
         <img src="assets/images/bot2.jpg" alt="Bot Personal">  
         <h2>Bot Personal</h2>  
-        <button onclick="mostrarPago()">𝗠𝗘𝗡𝗦: 5$</button>  
+        <button onclick="redireccionarPago('Bot Personal', 5)">𝗠𝗘𝗡𝗦: 5$</button>  
     </div>  
 </div>  
 
-<div id="pago" class="container" style="display: none;">  
-    <h1>Método de Pago</h1>  
-    <form id="form-pago">  
-        <label for="tarjeta">Número de Tarjeta:</label>  
-        <input type="text" id="tarjeta" name="tarjeta" required>  
-        <label for="cvv">CVV:</label>  
-        <input type="text" id="cvv" name="cvv" required>  
-        <button type="submit">Pagar</button>  
-    </form>  
-</div>  
-
-<script src="main.js"></script>  
 <script>  
     window.onload = function() {  
         if(localStorage.getItem('user')) {  
@@ -94,9 +82,11 @@
         document.getElementById('seleccion-bots').style.display = 'none';  
     }  
 
-    function mostrarPago() {  
-        document.getElementById('seleccion-bots').style.display = 'none';  
-        document.getElementById('pago').style.display = 'block';  
+    function redireccionarPago(tipoBot, precio) {  
+        const numero = "50488198573";  
+        const mensaje = `Hola, quiero comprar el ${tipoBot} por ${precio}$.`;  
+        const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;  
+        window.location.href = url;  
     }  
 </script>  
 
